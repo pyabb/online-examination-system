@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+    oes:
+        build: online-examination-system
+        container_name: oes_app
+        ports:
+            - "8383:8000"
+        volumes:
+            - ./online-examination-system:/var/www/html
+        depends_on:
+            - mysql
+        command: php artisan serve --host 0.0.0.0 --port=8000
+    mysql:
+        build: db
+        container_name: oes_db
+        ports:
+            - "3306:3306"
+        #restart: always
+        environment:
+            MYSQL_ROOT_USER: root
+            MYSQL_ROOT_PASSWORD: q75Cx8Ai6@
+            MYSQL_DATABASE: oes
+            MYSQL_USER: oes
+            MYSQL_PASSWORD: q75Cx8Ai6@
+            #MYSQL_RANDOM_ROOT_PASSWORD: '1'
+        volumes:
+            - ./db/mysql-data:/var/lib/mysql:rw
