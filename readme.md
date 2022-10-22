@@ -1,2 +1,7 @@
-#### Initial commit
+### Installation
+
+#### Docker
+...
+
+#### Cpanel or Xampp
 ...
