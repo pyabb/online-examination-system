@@ -70,43 +70,44 @@
                                         <div class="main-profile-contact-list">
                                             <div class="me-5">
                                                 <div class="media mb-4 d-flex">
-                                                    <div class="media-icon bg-secondary bradius me-3 mt-1">
+                                                    <div class="media-icon bg-secondary-gradient bradius me-3 mt-1">
                                                         <i class="fe fe-edit fs-20 text-white"></i>
                                                     </div>
                                                     <div class="media-body">
                                                         <span class="text-muted">Total exams</span>
                                                         <div class="fw-semibold fs-25">
-                                                            328
+                                                            125
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="me-5 mt-5 mt-md-0">
                                                 <div class="media mb-4 d-flex">
-                                                    <div class="media-icon bg-danger bradius text-white me-3 mt-1">
+                                                    <div class="media-icon bg-info-gradient bradius text-white me-3 mt-1">
                                                                 <span class="mt-3">
-                                                                    <i class="fe fe-users fs-20"></i>
+                                                                    {{--<i class="fe fe-users fs-20"></i>--}}
+                                                                    <i class="fe fe-plus-square fs-20"></i>
                                                                 </span>
                                                     </div>
                                                     <div class="media-body">
                                                         <span class="text-muted">Exams Approved</span>
                                                         <div class="fw-semibold fs-25">
-                                                            937k
+                                                            100
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="me-0 mt-5 mt-md-0">
                                                 <div class="media">
-                                                    <div class="media-icon bg-primary text-white bradius me-3 mt-1">
+                                                    <div class="media-icon bg-danger-gradient text-white bradius me-3 mt-1">
                                                                 <span class="mt-3">
-                                                                    <i class="fe fe-cast fs-20"></i>
+                                                                    <i class="fe fe-minus-square fs-20"></i>
                                                                 </span>
                                                     </div>
                                                     <div class="media-body">
                                                         <span class="text-muted">Exams Disapproved</span>
                                                         <div class="fw-semibold fs-25">
-                                                            2,876
+                                                            25
                                                         </div>
                                                     </div>
                                                 </div>
@@ -193,7 +194,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 text-end pt-4">
-                                                <a href="javascript:void(0);" class="btn btn-secondary mt-1 mb-1">
+                                                <a href="{{ route('profile.edit') }}" class="btn btn-secondary mt-1 mb-1">
                                                     <i class="fa fa-edit"></i> <span>Editar</span>
                                                 </a>
                                             </div>
