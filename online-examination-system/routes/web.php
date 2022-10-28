@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ViewsController::class, 'home'])->middleware(['auth'])->name('home');
 Route::get('/dashboard', [ViewsController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 Route::get('/profile', [ViewsController::class, 'profile'])->middleware(['auth'])->name('profile');
+Route::get('/profile/edit', [ViewsController::class, 'profile_edit'])->middleware(['auth'])->name('profile.edit');
 
 require __DIR__.'/auth.php';
