@@ -10,7 +10,7 @@
                     <h1 class="page-title">Profile</h1>
                     <div>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ Auth::user()->isAdmin ? route('admin.dashboard') : route('dashboard') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Profile</li>
                         </ol>
                     </div>
@@ -34,8 +34,8 @@
                                                         </div>
                                                         <div class="profile-img-content text-dark text-start">
                                                             <div class="text-dark">
-                                                                <h3 class="h3 mb-2">Percy Kewshun</h3>
-                                                                <h5 class="text-muted">Web Developer</h5>
+                                                                <h3 class="h3 mb-2">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</h3>
+                                                                <h5 class="text-muted">{{ Auth::user()->isAdmin ? __('Administrator') : __('Student') }}</h5>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -65,6 +65,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xl-4">
+                                @if(!Auth::user()->isAdmin)
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="main-profile-contact-list">
@@ -115,6 +116,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-title">About</div>
@@ -123,7 +125,7 @@
                                         <div>
                                             <h5>Biography<i class="fe fe-edit-3 text-primary mx-2"></i></h5>
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consectetur deserunt, dolore facilis hic in inventore labore libero magni minus nam natus, officiis porro quibusdam quos recusandae temporibus voluptas voluptates.
+                                                {{ Auth::user()->aboutHimself }}
                                             </p>
                                         </div>
                                         <hr>
@@ -132,7 +134,7 @@
                                                 <span><i class="fe fe-map-pin fs-20"></i></span>
                                             </div>
                                             <div>
-                                                <strong>San Juan de Lurigancho, Lima, Perú</strong>
+                                                <strong>{{ Auth::user()->country ?? __('No defined') }}, {{ Auth::user()->state ?? 'No defined' }}, {{ Auth::user()->city ?? 'No defined' }}</strong>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center mb-3 mt-3">
@@ -140,7 +142,7 @@
                                                 <span><i class="fe fe-phone fs-20"></i></span>
                                             </div>
                                             <div>
-                                                <strong>+51 555778554</strong>
+                                                <strong>{{ Auth::user()->phone ?? __('+xx xxxxxxxxx') }}</strong>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center mb-3 mt-3">
@@ -148,14 +150,13 @@
                                                 <span><i class="fe fe-mail fs-20"></i></span>
                                             </div>
                                             <div>
-                                                <strong>admin@nonemail.com.pe</strong>
+                                                <strong>{{ Auth::user()->email }}</strong>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-8">
-
 
                                 <div class="card">
                                     <div class="card-header">
@@ -166,31 +167,31 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email address" value="{{ __('admin@nonemail.com.pe') }}" disabled>
+                                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email address" value="{{ Auth::user()->email }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="">Firstname</label>
-                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ __('Calissa') }}" disabled>
+                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->firstname }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="">Lastname</label>
-                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ __('Doe') }}" disabled>
+                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->lastname }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputnumber">Document Type</label>
-                                                    <input type="text" class="form-control" id="exampleInputnumber" placeholder="Contact number" value="{{ __('DNI') }}" disabled>
+                                                    <input type="text" class="form-control" id="exampleInputnumber" placeholder="Document type" value="{{ Auth::user()->documentType }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputnumber">Document Number</label>
-                                                    <input type="number" class="form-control" id="exampleInputnumber" placeholder="Contact number" value="{{ __('45540762') }}" disabled>
+                                                    <input type="number" class="form-control" id="exampleInputnumber" placeholder="Document value" value="{{ Auth::user()->document }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 text-end pt-4">
