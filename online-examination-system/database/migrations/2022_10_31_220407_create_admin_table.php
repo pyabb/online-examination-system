@@ -19,9 +19,13 @@ class CreateAdminTable extends Migration
             $table->string('firstname', 255);
             $table->string('lastname', 255);
             $table->string('email', 255)->unique();
+            $table->string('country', 50);
+            $table->string('state', 50)->nullable();
+            $table->string('city', 50)->nullable();
             $table->string('documentType', 15);
             $table->string('document', 15)->unique();
             $table->string('phone')->nullable();
+            $table->string('aboutHimself', 255)->default('user does not set description about himself');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('isAdmin')->default(false);
