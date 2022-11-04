@@ -2,7 +2,12 @@
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <div class="app-sidebar">
         <div class="side-header">
-            <a class="header-brand1" href="{{ route('dashboard') }}">
+            @if(Auth::user()->isAdmin)
+                @php $route_dashboard = route('admin.dashboard'); @endphp
+            @else
+                @php $route_dashboard = route('dashboard'); @endphp
+            @endif
+            <a class="header-brand1" href="{{ $route_dashboard }}">
                 <img src="{{ asset('assets/images/brand/logo.png') }}" class="header-brand-img desktop-logo" alt="logo">
                 <img src="{{ asset('assets/images/brand/logo-1.png') }}" class="header-brand-img toggle-logo" alt="logo">
             </a>
@@ -18,10 +23,12 @@
                     <h3>Main</h3>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('dashboard') }}"><i
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ $route_dashboard }}"><i
                             class="side-menu__icon fe fe-home"></i><span
                             class="side-menu__label">Dashboard</span></a>
                 </li>
+
+                @if(Auth::user()->isAdmin)
                 <li class="sub-category">
                     <h3>Users</h3>
                 </li>
@@ -47,6 +54,7 @@
                         <li><a href="javascript:void(0);" class="slide-item"> Add new teacher</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-category">
                     <h3>School</h3>
                 </li>
@@ -61,6 +69,7 @@
                         <li><a href="javascript:void(0);" class="slide-item"> Add new exam</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-category">
                     <h3>Settings</h3>
                 </li>
@@ -75,6 +84,27 @@
                         <li><a href="javascript:void(0);" class="slide-item"> Time zone</a></li>
                     </ul>
                 </li>
+                @endif
+
+                @if(!Auth::user()->isAdmin)
+                <li class="sub-category">
+                    <h3>School</h3>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
+                            class="side-menu__icon fe fe-clipboard"></i><span
+                            class="side-menu__label">Exams</span><i
+                            class="angle fe fe-chevron-right"></i></a>
+                    <ul class="slide-menu">
+                        <li class="side-menu-label1"><a href="javascript:void(0)">Exams</a></li>
+                        <li><a href="javascript:void(0);" class="slide-item"> View exams</a></li>
+                        <li><a href="javascript:void(0);" class="slide-item"> Active exams</a></li>
+                        <li><a href="javascript:void(0);" class="slide-item"> Pending exams</a></li>
+                        <li><a href="javascript:void(0);" class="slide-item"> Canceled exams</a></li>
+                    </ul>
+                </li>
+                @endif
+
             </ul>
             <div class="slide-right" id="slide-right">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
