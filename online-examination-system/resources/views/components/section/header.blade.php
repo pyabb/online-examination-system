@@ -9,7 +9,6 @@
             <!-- logo -->
             <a class="logo-horizontal " href="javascript:void(0);">
                 <img src="{{ asset('assets/images/brand/logo.png') }}" class="header-brand-img desktop-logo" alt="logo">
-                {{--<img src="../assets/images/brand/logo-3.png" class="header-brand-img light-logo1" alt="logo">--}}
             </a>
             <!-- end logo -->
 
@@ -84,18 +83,18 @@
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                     <div class="drop-heading">
                                         <div class="text-center">
-                                            <h5 class="text-dark mb-0 fs-14 fw-semibold">{{ Auth::user()->name }}</h5>
+                                            <h5 class="text-dark mb-0 fs-14 fw-semibold">{{ Auth::user()->firstname }}</h5>
                                             <small class="text-muted">Senior Admin</small>
                                         </div>
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
-                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                    <a class="dropdown-item" href="{{ Auth::user()->isAdmin ? route('admin.profile') : route('profile') }}">
                                         <i class="dropdown-icon fe fe-user"></i> Profile
                                     </a>
                                     <a class="dropdown-item" href="javascript:void(0);">
                                         <i class="dropdown-icon fe fe-settings"></i> Settings
                                     </a>
-                                    <form method="POST" action="{{ route('logout') }}">
+                                    <form method="POST" action="{{ Auth::user()->isAdmin ? route('admin.logout') : route('logout') }}">
                                         @csrf
                                         <a class="dropdown-item" href="javascript:void(0);" onclick="this.closest('form').submit();">
                                             <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
