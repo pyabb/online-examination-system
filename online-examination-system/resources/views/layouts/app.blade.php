@@ -13,6 +13,9 @@
 
                 <!-- app content -->
                 {{ $slot }}
+
+                <!-- app footer -->
+                <x-section.footer />
             </div>
         </div>
 
