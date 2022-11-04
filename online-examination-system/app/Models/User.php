@@ -22,9 +22,15 @@ class User extends Authenticatable
         'firstname',
         'lastname',
         'email',
+        'country',
+        'state',
+        'city',
         'documentType',
         'document',
+        'phone',
+        'aboutHimself',
         'address1',
+        'address2',
         'password',
     ];
 
