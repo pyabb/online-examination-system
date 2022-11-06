@@ -10,8 +10,8 @@
                     <h1 class="page-title">Edit Profile</h1>
                     <div>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('profile') }}">Profile</a></li>
+                            <li class="breadcrumb-item"><a href="{{ Auth::user()->isAdmin ? route('admin.dashboard') : route('dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ Auth::user()->isAdmin ? route('admin.profile') : route('profile') }}">Profile</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
                         </ol>
                     </div>
@@ -72,193 +72,116 @@
                                 <a href="javascript:void(0)" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
-                        <div class="card panel-theme">
-                            <div class="card-header">
-                                <div class="float-start">
-                                    <h3 class="card-title">Contact</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="card-body no-padding">
-                                <ul class="list-group no-margin">
-                                    <li class="list-group-item d-flex ps-3">
-                                        <div class="social social-profile-buttons me-2">
-                                            <a class="social-icon text-primary" href="javascript:void(0)"><i class="fe fe-mail"></i></a>
-                                        </div>
-                                        <a href="javascript:void(0)" class="my-auto">support@demo.com</a>
-                                    </li>
-                                    <li class="list-group-item d-flex ps-3">
-                                        <div class="social social-profile-buttons me-2">
-                                            <a class="social-icon text-primary" href="javascript:void(0)"><i class="fe fe-globe"></i></a>
-                                        </div>
-                                        <a href="javascript:void(0)" class="my-auto">www.abcd.com</a>
-                                    </li>
-                                    <li class="list-group-item d-flex ps-3">
-                                        <div class="social social-profile-buttons me-2">
-                                            <a class="social-icon text-primary" href="javascript:void(0)"><i class="fe fe-phone"></i></a>
-                                        </div>
-                                        <a href="javascript:void(0)" class="my-auto">+125 5826 3658</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-xl-8">
-                        <div class="card">
-                            <div class="card-header">
+                        <form class="card" method="POST" action="{{ Auth::user()->isAdmin ? route('admin.profile.edit') : route('profile.edit') }}">
+                            @csrf
+                            <div class="card-header d-flex flex-column align-items-start">
                                 <h3 class="card-title">Edit Profile</h3>
+
+                                @if(session()->has('message'))
+                                    <div class="mt-4 text-sm text-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+
+                                <!-- Validation Errors -->
+                                <!-- create another component to display all errors -->
+                                <x-auth-validation-errors class="mt-4 mb-4" :errors="$errors" />
+
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email address">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="{{ Auth::user()->email }}">
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12">
                                         <div class="form-group">
-                                            <label for="exampleInputname">First Name</label>
-                                            <input type="text" class="form-control" id="exampleInputname" placeholder="First Name">
+                                            <label for="firstname">First Name</label>
+                                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" value="{{ Auth::user()->firstname }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                         <div class="form-group">
-                                            <label for="exampleInputname1">Last Name</label>
-                                            <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Last Name">
+                                            <label for="lastname">Last Name</label>
+                                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" value="{{ Auth::user()->lastname }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12">
                                         <div class="form-group">
-                                            <label for="exampleInputnumber">Document Type</label>
-                                            <select class="form-control select2 form-select">
-                                                <option disabled selected>Default</option>
-                                                <option value="1">DNI</option>
-                                                <option value="2">CE</option>
-                                                <option value="3">OTHER</option>
+                                            <label for="documentType">Document Type</label>
+                                            <select class="form-control select2 form-select" name="documentType" id="documentType">
+                                                @if(Auth::user()->documentType == 'DNI')
+                                                    <option value="DNI" selected>DNI</option>
+                                                @else
+                                                    <option value="DNI">DNI</option>
+                                                @endif
+
+                                                @if(Auth::user()->documentType == 'CE')
+                                                    <option value="CE" selected>CE</option>
+                                                @else
+                                                    <option value="CE">CE</option>
+                                                @endif
+
+                                                @if(Auth::user()->documentType == 'OTHER')
+                                                    <option value="OTHER" selected>OTHER</option>
+                                                @else
+                                                    <option value="OTHER">OTHER</option>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                         <div class="form-group">
-                                            <label for="exampleInputnumber">Document Number</label>
-                                            <input type="number" class="form-control" id="exampleInputnumber" placeholder="Contact number">
+                                            <label for="document">Document Number</label>
+                                            <input type="number" class="form-control" id="document" name="document" placeholder="Document" value="{{ Auth::user()->document }}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label for="country">Country</label>
+                                            <input type="text" class="form-control" id="country" name="country" placeholder="Country" value="{{ Auth::user()->country }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label for="state">State</label>
+                                            <input type="text" class="form-control" id="state" name="state" placeholder="State" value="{{ Auth::user()->state }}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <input type="text" class="form-control" id="city" name="city" placeholder="City" value="{{ Auth::user()->city }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label for="phone">Contact Number</label>
+                                            <input type="number" class="form-control" id="phone" name="phone" placeholder="Contact number" value="{{ Auth::user()->phone }}">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputnumber">Contact Number</label>
-                                    <input type="number" class="form-control" id="exampleInputnumber" placeholder="Contact number">
-                                </div>
-                                <div class="form-group">
                                     <label class="form-label">About Me</label>
-                                    <textarea class="form-control" rows="6">My bio.........</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Website</label>
-                                    <input class="form-control" placeholder="http://splink.com">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Date Of Birth</label>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <select class="form-control select2 form-select">
-                                                <option value="0">Date</option>
-                                                <option value="1">01</option>
-                                                <option value="2">02</option>
-                                                <option value="3">03</option>
-                                                <option value="4">04</option>
-                                                <option value="5">05</option>
-                                                <option value="6">06</option>
-                                                <option value="7">07</option>
-                                                <option value="8">08</option>
-                                                <option value="9">09</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                                <option value="13">13</option>
-                                                <option value="14">14</option>
-                                                <option value="15">15</option>
-                                                <option value="16">16</option>
-                                                <option value="17">17</option>
-                                                <option value="18">18</option>
-                                                <option value="19">19</option>
-                                                <option value="20">20</option>
-                                                <option value="21">21</option>
-                                                <option value="22">22</option>
-                                                <option value="23">23</option>
-                                                <option value="24">24</option>
-                                                <option value="25">25</option>
-                                                <option value="26">26</option>
-                                                <option value="27">27</option>
-                                                <option value="28">28</option>
-                                                <option value="29">29</option>
-                                                <option value="30">30</option>
-                                                <option value="31">31</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <select class="form-control select2 form-select">
-                                                <option value="0">Mon</option>
-                                                <option value="1">Jan</option>
-                                                <option value="2">Feb</option>
-                                                <option value="3">Mar</option>
-                                                <option value="4">Apr</option>
-                                                <option value="5">May</option>
-                                                <option value="6">June</option>
-                                                <option value="7">July</option>
-                                                <option value="8">Aug</option>
-                                                <option value="9">Sep</option>
-                                                <option value="10">Oct</option>
-                                                <option value="11">Nov</option>
-                                                <option value="12">Dec</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <select class="form-control select2 form-select">
-                                                <option value="0">Year</option>
-                                                <option value="1">2018</option>
-                                                <option value="2">2017</option>
-                                                <option value="3">2016</option>
-                                                <option value="4">2015</option>
-                                                <option value="5">2014</option>
-                                                <option value="6">2013</option>
-                                                <option value="7">2102</option>
-                                                <option value="8">2012</option>
-                                                <option value="9">2011</option>
-                                                <option value="10">2010</option>
-                                                <option value="11">2009</option>
-                                                <option value="12">2008</option>
-                                                <option value="13">2007</option>
-                                                <option value="14">2006</option>
-                                                <option value="15">2005</option>
-                                                <option value="16">2004</option>
-                                                <option value="17">2003</option>
-                                                <option value="18">2002</option>
-                                                <option value="19">2001</option>
-                                                <option value="20">1999</option>
-                                                <option value="21">1998</option>
-                                                <option value="22">1997</option>
-                                                <option value="23">1996</option>
-                                                <option value="24">1995</option>
-                                                <option value="25">1994</option>
-                                                <option value="26">1993</option>
-                                                <option value="27">1992</option>
-                                                <option value="28">1991</option>
-                                                <option value="29">1990</option>
-                                                <option value="30">1989</option>
-                                                <option value="31">1988</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    <textarea class="form-control" name="aboutHimself" rows="6">{{ Auth::user()->aboutHimself }}</textarea>
                                 </div>
                             </div>
                             <div class="card-footer text-end">
-                                <a href="javascript:void(0)" class="btn btn-success my-1">Save</a>
-                                <a href="javascript:void(0)" class="btn btn-danger my-1">Cancel</a>
+                                <button type="submit" class="btn btn-success my-1">Save</button>
+                                <a href="{{ Auth::user()->isAdmin ? route('admin.profile') : route('profile') }}" class="btn btn-danger my-1">Cancel</a>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <!-- ROW-1 CLOSED -->
