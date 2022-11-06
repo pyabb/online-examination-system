@@ -184,6 +184,24 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
+                                                    <label for="">Country</label>
+                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->country }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="">State</label>
+                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->state }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="">City</label>
+                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->city }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
                                                     <label for="documentType">Document Type</label>
                                                     <input type="text" class="form-control" id="documentType" placeholder="Document type" value="{{ Auth::user()->documentType }}" disabled>
                                                 </div>
