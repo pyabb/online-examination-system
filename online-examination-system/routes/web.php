@@ -25,6 +25,9 @@ Route::get('/profile', [ProfileController::class, 'show'])
     ->middleware(['auth'])
     ->name('profile');
 
+Route::post('profile/edit', [ProfileController::class, 'update'])
+    ->middleware(['auth']);
+
 Route::get('/profile/edit', [ProfileController::class, 'edit'])
     ->middleware(['auth'])
     ->name('profile.edit');
