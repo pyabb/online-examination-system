@@ -34,9 +34,9 @@
                                     </div>
                                     <div class="main-chat-msg-name">
                                         <a href="{{ route('profile') }}">
-                                            <h5 class="mb-1 text-dark fw-semibold">Percy Kewshun</h5>
+                                            <h5 class="mb-1 text-dark fw-semibold">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</h5>
                                         </a>
-                                        <p class="text-muted mt-0 mb-0 pt-0 fs-13">Web Designer</p>
+                                        <p class="text-muted mt-0 mb-0 pt-0 fs-13">{{ Auth::user()->isAdmin ? __('Administrator') : __('Student') }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
