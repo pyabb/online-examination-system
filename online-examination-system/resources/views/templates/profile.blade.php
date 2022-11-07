@@ -77,7 +77,7 @@
                                                     <div class="media-body">
                                                         <span class="text-muted">Total exams</span>
                                                         <div class="fw-semibold fs-25">
-                                                            125
+                                                            -
                                                         </div>
                                                     </div>
                                                 </div>
@@ -93,7 +93,7 @@
                                                     <div class="media-body">
                                                         <span class="text-muted">Exams Approved</span>
                                                         <div class="fw-semibold fs-25">
-                                                            100
+                                                            -
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,7 +108,7 @@
                                                     <div class="media-body">
                                                         <span class="text-muted">Exams Disapproved</span>
                                                         <div class="fw-semibold fs-25">
-                                                            25
+                                                            -
                                                         </div>
                                                     </div>
                                                 </div>
