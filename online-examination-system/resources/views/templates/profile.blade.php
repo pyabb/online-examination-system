@@ -77,7 +77,7 @@
                                                     <div class="media-body">
                                                         <span class="text-muted">Total exams</span>
                                                         <div class="fw-semibold fs-25">
-                                                            125
+                                                            -
                                                         </div>
                                                     </div>
                                                 </div>
@@ -93,7 +93,7 @@
                                                     <div class="media-body">
                                                         <span class="text-muted">Exams Approved</span>
                                                         <div class="fw-semibold fs-25">
-                                                            100
+                                                            -
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,7 +108,7 @@
                                                     <div class="media-body">
                                                         <span class="text-muted">Exams Disapproved</span>
                                                         <div class="fw-semibold fs-25">
-                                                            25
+                                                            -
                                                         </div>
                                                     </div>
                                                 </div>
@@ -184,18 +184,42 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputnumber">Document Type</label>
-                                                    <input type="text" class="form-control" id="exampleInputnumber" placeholder="Document type" value="{{ Auth::user()->documentType }}" disabled>
+                                                    <label for="documentType">Document Type</label>
+                                                    <input type="text" class="form-control" id="documentType" placeholder="Document type" value="{{ Auth::user()->documentType }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputnumber">Document Number</label>
-                                                    <input type="number" class="form-control" id="exampleInputnumber" placeholder="Document value" value="{{ Auth::user()->document }}" disabled>
+                                                    <label for="document">Document Number</label>
+                                                    <input type="number" class="form-control" id="document" placeholder="Document value" value="{{ Auth::user()->document }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="">Country</label>
+                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->country }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="">State</label>
+                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->state }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="">City</label>
+                                                    <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->city }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="phone">Phone</label>
+                                                    <input type="number" class="form-control" id="phone" placeholder="Phone value" value="{{ Auth::user()->phone }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 text-end pt-4">
-                                                <a href="{{ route('profile.edit') }}" class="btn btn-secondary mt-1 mb-1">
+                                                <a href="{{ Auth::user()->isAdmin ? route('admin.profile.edit') : route('profile.edit') }}" class="btn btn-secondary mt-1 mb-1">
                                                     <i class="fa fa-edit"></i> <span>Editar</span>
                                                 </a>
                                             </div>

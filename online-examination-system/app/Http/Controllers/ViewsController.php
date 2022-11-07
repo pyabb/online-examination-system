@@ -15,14 +15,4 @@ class ViewsController extends Controller
     {
         return view('templates.dashboard');
     }
-
-    public function profile()
-    {
-        return view('templates.profile');
-    }
-
-    public function profile_edit()
-    {
-        return view('templates.profile-edit');
-    }
 }

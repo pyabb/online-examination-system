@@ -14,6 +14,9 @@
                 <!-- app content -->
                 {{ $slot }}
 
+                <!-- app country selector -->
+                {{--<x-common.country-selector />--}}
+
                 <!-- app footer -->
                 <x-section.footer />
             </div>

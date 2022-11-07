@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\Admin\AdminAuthenticatedSessionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,17 @@ Route::get('/', [ViewsController::class, 'home'])->middleware(['auth'])->name('h
 Route::get('/dashboard', [ViewsController::class, 'dashboard'])
     ->middleware('auth')
     ->name('dashboard');
-Route::get('/profile', [ViewsController::class, 'profile'])->middleware(['auth'])->name('profile');
-Route::get('/profile/edit', [ViewsController::class, 'profile_edit'])->middleware(['auth'])->name('profile.edit');
+
+Route::get('/profile', [ProfileController::class, 'show'])
+    ->middleware(['auth'])
+    ->name('profile');
+
+Route::post('profile/edit', [ProfileController::class, 'update'])
+    ->middleware(['auth']);
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])
+    ->middleware(['auth'])
+    ->name('profile.edit');
 
 require __DIR__ . '/auth.php';
 
@@ -36,10 +46,16 @@ Route::get('admin/dashboard', [ViewsController::class, 'dashboard'])
     ->middleware('auth:admin')
     ->name('admin.dashboard');
 
-Route::get('/admin/profile', [ViewsController::class, 'profile'])
+Route::get('admin/profile', [ProfileController::class, 'show'])
     ->middleware(['auth:admin'])
     ->name('admin.profile');
 
+Route::get('admin/profile/edit', [ProfileController::class, 'edit'])
+    ->middleware(['auth:admin'])
+    ->name('admin.profile.edit');
+
+Route::post('admin/profile/edit', [ProfileController::class, 'update'])
+    ->middleware(['auth:admin']);
 
 Route::post('admin/login', [AdminAuthenticatedSessionController::class, 'store']);
 
