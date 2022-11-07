@@ -166,7 +166,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                         <div class="form-group">
-                                            <label for="phone">Contact Number</label>
+                                            <label for="phone">Phone</label>
                                             <input type="number" class="form-control" id="phone" name="phone" placeholder="Contact number" value="{{ Auth::user()->phone }}">
                                         </div>
                                     </div>

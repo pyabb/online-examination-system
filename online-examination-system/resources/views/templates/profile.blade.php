@@ -184,6 +184,18 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
+                                                    <label for="documentType">Document Type</label>
+                                                    <input type="text" class="form-control" id="documentType" placeholder="Document type" value="{{ Auth::user()->documentType }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="document">Document Number</label>
+                                                    <input type="number" class="form-control" id="document" placeholder="Document value" value="{{ Auth::user()->document }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
                                                     <label for="">Country</label>
                                                     <input class="form-control mb-4" placeholder="Input box (readonly)" type="text" value="{{ Auth::user()->country }}" disabled>
                                                 </div>
@@ -202,14 +214,8 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label for="documentType">Document Type</label>
-                                                    <input type="text" class="form-control" id="documentType" placeholder="Document type" value="{{ Auth::user()->documentType }}" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="document">Document Number</label>
-                                                    <input type="number" class="form-control" id="document" placeholder="Document value" value="{{ Auth::user()->document }}" disabled>
+                                                    <label for="phone">Phone</label>
+                                                    <input type="number" class="form-control" id="phone" placeholder="Phone value" value="{{ Auth::user()->phone }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 text-end pt-4">
