@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\AdminAuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewsController;
@@ -63,3 +64,16 @@ Route::post('admin/logout', [AdminAuthenticatedSessionController::class, 'destro
     ->middleware('auth:admin')
     ->name('admin.logout');
 
+Route::get('admin/students', [UserController::class, 'index'])
+    ->middleware('auth:admin')
+    ->name('admin.students');
+
+Route::get('admin/students/{id}/edit', [UserController::class, 'edit'])
+    ->where('id', '[0-9]+')
+    ->middleware('auth:admin')
+    ->name('admin.student.edit');
+
+Route::post('admin/students/{id}', [UserController::class, 'update'])
+    ->where('id', '[0-9]+')
+    ->middleware('auth:admin')
+    ->name('admin.student.update');
