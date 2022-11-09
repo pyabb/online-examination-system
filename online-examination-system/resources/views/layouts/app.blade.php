@@ -3,7 +3,7 @@
 
     <x-section.head>
         <x-slot name="css">
-            {{ $css }}
+            {{ $css ?? '' }}
         </x-slot>
     </x-section.head>
 
