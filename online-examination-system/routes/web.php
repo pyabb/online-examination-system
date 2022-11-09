@@ -73,7 +73,12 @@ Route::get('admin/students/{id}/edit', [UserController::class, 'edit'])
     ->middleware('auth:admin')
     ->name('admin.student.edit');
 
-Route::post('admin/students/{id}', [UserController::class, 'update'])
+Route::put('admin/students/{id}', [UserController::class, 'update'])
     ->where('id', '[0-9]+')
     ->middleware('auth:admin')
     ->name('admin.student.update');
+
+Route::delete('admin/students/{id}', [UserController::class, 'delete'])
+    ->where('id', '[0-9]+')
+    ->middleware(['auth:admin'])
+    ->name('admin.student.delete');
