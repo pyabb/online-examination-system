@@ -11,7 +11,29 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
-    require('tailwindcss'),
-    require('autoprefixer'),
-]);
+mix
+    //.js('resources/js/admin/user.js', 'public/assets/dist/js/user.bundle.min.js')
+    //.js('resources/js/src/default/themeColors.js', 'public/assets/js/themeColors.js')
+    //.js('resources/js/src/default/custom.js', 'public/assets/js/custom.js')
+    //.js('resources/js/app.js', 'public/js')
+    //.js('resources/js/src/default/plugins/sidebar/sidebar.js', 'public/assets/plugins/sidebar/sidebar.js')
+
+    // Oops, an error with sidemenu
+    //.js('resources/js/src/default/plugins/sidemenu/sidemenu.js', 'public/assets/plugins/sidemenu/sidemenu.js')
+
+    //.js('resources/js/src/default/plugins/p-scroll/perfect-scrollbar.js', 'public/assets/plugins/p-scroll/perfect-scrollbar.js')
+
+    /*.postCss('resources/css/src/default/css/sweetalert2.css','public/assets/dist/css/sweetalert2.min.css', [
+        require('autoprefixer'),
+    ])*/
+
+    /*.postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss'),
+        require('autoprefixer'),
+    ])*/
+
+    .options({
+        terser: {
+            extractComments: false,
+        },
+    });
