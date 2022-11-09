@@ -46,7 +46,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach($students as $student)
-                                            <tr>
+                                            <tr data-id="{{ $student->id }}">
                                                 <td>{{ $student->firstname }} {{$student->lastname}}</td>
                                                 <td>{{ $student->email }}</td>
                                                 <td>{{ $student->documentType }} - {{ $student->document }}</td>
