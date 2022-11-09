@@ -38,4 +38,21 @@ class UserController extends Controller
         }
         return redirect()->back()->with('message', 'The student was updated successfully.');
     }
+
+    public function delete($id)
+    {
+        $student = User::find($id);
+        if(!$student)
+        {
+            return response()->json(['success' => false, 'message' => 'Student dont exists.']);
+        }
+
+        if(!$student->delete())
+        {
+            return response()->json(['success' => false, 'message' => 'Oops! and error. The student could not be deleted.']);
+
+        }
+
+        return response()->json(['success' => true, 'message' => 'Student with id ' . $student->id . ' has been deleted successfully.']);
+    }
 }
