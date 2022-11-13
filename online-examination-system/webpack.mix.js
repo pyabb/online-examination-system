@@ -22,6 +22,7 @@ mix
     //.js('resources/js/src/default/plugins/sidemenu/sidemenu.js', 'public/assets/plugins/sidemenu/sidemenu.js')
 
     //.js('resources/js/src/default/plugins/p-scroll/perfect-scrollbar.js', 'public/assets/plugins/p-scroll/perfect-scrollbar.js')
+    //.js('resources/js/src/default/plugins/bootstrap/js/popper.js', 'public/assets/plugins/bootstrap/js/popper.min.js')
 
     /*.postCss('resources/css/src/default/css/sweetalert2.css','public/assets/dist/css/sweetalert2.min.css', [
         require('autoprefixer'),
