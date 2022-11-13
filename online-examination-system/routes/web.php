@@ -70,7 +70,7 @@ Route::get('admin/students', [UserController::class, 'index'])
 
 Route::get('admin/students/create', [UserController::class, 'create'])
     ->middleware('auth:admin')
-    ->name('admin.create');
+    ->name('admin.student.create');
 
 Route::get('admin/students/{id}/edit', [UserController::class, 'edit'])
     ->where('id', '[0-9]+')
