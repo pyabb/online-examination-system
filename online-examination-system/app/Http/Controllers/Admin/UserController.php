@@ -16,6 +16,11 @@ class UserController extends Controller
         return view('templates.admin.user-index', ['students' => $students]);
     }
 
+    public function create()
+    {
+        return view('templates.admin.user-create');
+    }
+
     public function edit($id)
     {
         $student = User::find($id);
