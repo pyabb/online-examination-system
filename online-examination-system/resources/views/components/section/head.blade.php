@@ -7,6 +7,7 @@
     <meta name="description" content="Colidev – Bootstrap 5 Online examination system">
     <meta name="author" content="Colidev Corp Technologies Private Limited">
     <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
+    <meta name="webpage" content="{{ config('app.url') }}">
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/brand/favicon.ico') }}" />
@@ -26,5 +27,7 @@
 
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/colors/color1.css') }}" />
+
+    {{ $css ?? '' }}
 
 </head>

@@ -32,7 +32,6 @@ vendor/
 docs/base/
 example/
 
-online-examination-system/public/assets/iconfonts/bootstrapicons/
 online-examination-system/public/assets/iconfonts/glyphicons/
 online-examination-system/public/assets/iconfonts/ionicons/
 online-examination-system/public/assets/iconfonts/linearicons/
@@ -41,3 +40,6 @@ online-examination-system/public/assets/iconfonts/remixicon/
 online-examination-system/public/assets/iconfonts/simple-line-icons/
 online-examination-system/public/assets/iconfonts/themify/
 online-examination-system/public/assets/iconfonts/weathericons/
+
+online-examination-system/resources/js/src/default/
+online-examination-system/resources/css/src/default/

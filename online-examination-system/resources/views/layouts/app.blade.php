@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
-    <x-section.head />
+
+    <x-section.head>
+        <x-slot name="css">
+            {{ $css ?? '' }}
+        </x-slot>
+    </x-section.head>
+
     <body class="app sidebar-mini ltr dark-mode">
         <x-common.global-loader />
         <div class="page">
