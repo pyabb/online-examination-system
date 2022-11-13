@@ -28,6 +28,6 @@
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/colors/color1.css') }}" />
 
-    {{ $css }}
+    {{ $css ?? '' }}
 
 </head>
