@@ -39,7 +39,7 @@
                             class="angle fe fe-chevron-right"></i></a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)">Students</a></li>
-                        <li><a href="javascript:void(0);" class="slide-item"> View students</a></li>
+                        <li><a href="{{ route('admin.students') }}" class="slide-item"> View students</a></li>
                         <li><a href="javascript:void(0);" class="slide-item"> Add new student</a></li>
                     </ul>
                 </li>
