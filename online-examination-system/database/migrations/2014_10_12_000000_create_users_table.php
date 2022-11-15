@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('documentType', 15);
             $table->string('document', 15)->unique();
             $table->string('phone')->nullable();
-            $table->string('address1', 255);
-            $table->string('address2', 255)->nullable();
+            $table->string('address1', 255)->default('Undefined');
+            $table->string('address2', 255)->nullable()->default('Undefined');
             $table->string('aboutHimself', 255)->default('user does not set description about himself');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

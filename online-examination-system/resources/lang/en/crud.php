@@ -8,9 +8,13 @@ return [
         ],
     ],
     'student' => [
+        'store' => [
+            'success' => '',
+            'error' => 'The student cannot be created, try again in few seconds.'
+        ],
         'update' => [
             'success' => '',
-            'error' => 'The student cannot ne updated, try again in few minutes.'
+            'error' => 'The student cannot be updated, try again in few seconds.'
         ]
     ]
 ];

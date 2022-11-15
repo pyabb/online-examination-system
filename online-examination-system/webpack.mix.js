@@ -18,7 +18,6 @@ mix
     //.js('resources/js/app.js', 'public/js')
     //.js('resources/js/src/default/plugins/sidebar/sidebar.js', 'public/assets/plugins/sidebar/sidebar.js')
 
-    // Oops, an error with sidemenu
     //.js('resources/js/src/default/plugins/sidemenu/sidemenu.js', 'public/assets/plugins/sidemenu/sidemenu.js')
 
     //.js('resources/js/src/default/plugins/p-scroll/perfect-scrollbar.js', 'public/assets/plugins/p-scroll/perfect-scrollbar.js')
