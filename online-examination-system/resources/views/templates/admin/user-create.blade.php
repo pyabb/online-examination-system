@@ -24,8 +24,17 @@
                     <div class="col-xl-12 col-lg-12">
                         <form class="card form-horizontal" method="POST" action="{{ route('admin.students') }}">
                             @csrf
-                            <div class="card-header">
+                            <div class="card-header d-flex flex-column align-items-start">
                                 <h4 class="card-title">Data of the student</h4>
+                                @if(session()->has('message'))
+                                    <div class="mt-4 text-sm text-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+
+                                <!-- Validation Errors -->
+                                <!-- create another component to display all errors -->
+                                <x-auth-validation-errors class="mt-4 mb-4" :errors="$errors" />
                             </div>
                             <div class="card-body">
                                 <div class="form-horizontal">
@@ -34,7 +43,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label">Email address</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="email" placeholder="Email address ...">
+                                                    <input type="text" class="form-control" name="email" placeholder="Email address ..." value="{{ old('email') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -44,7 +53,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label">Firstname</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="firstname" placeholder="Firstname ...">
+                                                    <input type="text" class="form-control" name="firstname" placeholder="Firstname ..." value="{{ old('firstname') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -54,7 +63,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label">Lastname</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="lastname" placeholder="Lastname ...">
+                                                    <input type="text" class="form-control" name="lastname" placeholder="Lastname ..." value="{{ old('lastname') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +88,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label">Document number</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="document" placeholder="Document number ...">
+                                                    <input type="text" class="form-control" name="document" placeholder="Document number ..." value="{{ old('document') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -89,7 +98,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label">Country</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="country" placeholder="Country ...">
+                                                    <input type="text" class="form-control" name="country" placeholder="Country ..." value="{{ old('country') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +108,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label">State</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="state" placeholder="State ...">
+                                                    <input type="text" class="form-control" name="state" placeholder="State ..." value="{{ old('state') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +118,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label">City</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="city" placeholder="City ...">
+                                                    <input type="text" class="form-control" name="city" placeholder="City ..." value="{{ old('city') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -119,7 +128,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label">Phone</label>
                                                 <div class="col-md-9">
-                                                    <input type="number" class="form-control" name="phone" placeholder="Phone ...">
+                                                    <input type="number" class="form-control" name="phone" placeholder="Phone ..." value="{{ old('phone') }}">
                                                 </div>
                                             </div>
                                         </div>
