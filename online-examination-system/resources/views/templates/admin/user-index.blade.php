@@ -28,8 +28,9 @@
                 <div class="row row-sm">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex justify-content-between">
                                 <h3 class="card-title">Table Students</h3>
+                                <a href="{{ route('admin.student.create') }}" class="btn btn-primary">Create Student</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
