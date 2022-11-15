@@ -72,6 +72,9 @@ Route::get('admin/students/create', [UserController::class, 'create'])
     ->middleware('auth:admin')
     ->name('admin.student.create');
 
+Route::post('admin/students', [UserController::class, 'store'])
+    ->middleware(['auth:admin']);
+
 Route::get('admin/students/{id}/edit', [UserController::class, 'edit'])
     ->where('id', '[0-9]+')
     ->middleware('auth:admin')
