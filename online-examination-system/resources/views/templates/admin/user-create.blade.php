@@ -22,7 +22,7 @@
                 <!-- Row -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
-                        <form class="card form-horizontal" method="POST" action="">
+                        <form class="card form-horizontal" method="POST" action="{{ route('admin.students') }}">
                             @csrf
                             <div class="card-header">
                                 <h4 class="card-title">Data of the student</h4>
