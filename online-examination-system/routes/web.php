@@ -99,3 +99,8 @@ Route::delete('admin/students/{id}', [UserController::class, 'delete'])
 Route::get('admin/exams', [ExamController::class, 'index'])
     ->middleware('auth:admin')
     ->name('admin.exams');
+
+Route::delete('admin/exams/{id}', [ExamController::class, 'delete'])
+    ->where('id', '[0-9]+')
+    ->middleware(['auth:admin'])
+    ->name('admin.exam.delete');

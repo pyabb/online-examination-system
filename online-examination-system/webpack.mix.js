@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix
     //.js('resources/js/admin/user.js', 'public/assets/dist/js/user.bundle.min.js')
+    //.js('resources/js/admin/exam.js', 'public/assets/dist/js/exam.bundle.min.js')
     //.js('resources/js/src/default/themeColors.js', 'public/assets/js/themeColors.js')
     //.js('resources/js/src/default/custom.js', 'public/assets/js/custom.js')
     //.js('resources/js/app.js', 'public/js')
