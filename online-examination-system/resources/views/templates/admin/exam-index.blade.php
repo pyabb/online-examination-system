@@ -28,7 +28,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <h3 class="card-title">Table Exams</h3>
-                                <a href="{{ route('admin.student.create') }}" class="btn btn-primary">Create Exam</a>
+                                <a href="javascript:void();" class="btn btn-primary">Create Exam</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -58,10 +58,10 @@
                                                 <td>{{ $exam->time }} min</td>
                                                 <td>
                                                     <div class="btn-list">
-                                                        <a href="{{ route('admin.student.edit', $student->id ?? '') }}" id="bEdit" type="button" class="btn btn-sm btn-gray">
+                                                        <a href="javascript:void();" id="bEdit" type="button" class="btn btn-sm btn-gray">
                                                             <span class="fe fe-eye"></span>
                                                         </a>
-                                                        <a href="{{ route('admin.student.edit', $student->id ?? '') }}" id="bEdit" type="button" class="btn btn-sm btn-primary">
+                                                        <a href="javascript:void();" id="bEdit" type="button" class="btn btn-sm btn-primary">
                                                             <span class="fe fe-edit"></span>
                                                         </a>
                                                         <button id="bDel" type="button" class="btn  btn-sm btn-danger">
