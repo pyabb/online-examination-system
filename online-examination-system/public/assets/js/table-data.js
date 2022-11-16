@@ -10,6 +10,15 @@ $(function(e) {
         }
     });
 
+    $('#exam-responsive-datatable').DataTable({
+        language: {
+            searchPlaceholder: 'Search...',
+            scrollX: "100%",
+            sSearch: '',
+        },
+        order: [[0, 'desc']],
+    });
+
     //______Select2
     $('.select2').select2({
         minimumResultsForSearch: Infinity

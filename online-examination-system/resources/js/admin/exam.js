@@ -3,8 +3,8 @@ import Swal from 'sweetalert2'
 
 $(document).ready(function () {
     const uri = process.env.MIX_APP_URL || $("meta[name='webpage']").attr('content');
-    const table = $('#responsive-datatable').DataTable();
-    const tableBody= $('#responsive-datatable tbody');
+    const table = $('#exam-responsive-datatable').DataTable();
+    const tableBody= $('#exam-responsive-datatable tbody');
     tableBody.on('click', '#bDel', function () {
         const id = $(this).parents('tr').attr('data-id');
         let message;
