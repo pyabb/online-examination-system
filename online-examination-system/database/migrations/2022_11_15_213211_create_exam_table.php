@@ -18,7 +18,7 @@ class CreateExamTable extends Migration
             $table->string('uuid', 36)->unique();
             $table->string('course', 255);
             $table->string('theme', 255);
-            $table->date('date');
+            $table->timestamp('date');
             $table->integer('time');
             $table->enum('status', ['progress', 'pending', 'finish']);
             $table->integer('adminId');
