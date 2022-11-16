@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\AdminAuthenticatedSessionController;
+use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewsController;
 use Illuminate\Support\Facades\Route;
@@ -89,3 +90,12 @@ Route::delete('admin/students/{id}', [UserController::class, 'delete'])
     ->where('id', '[0-9]+')
     ->middleware(['auth:admin'])
     ->name('admin.student.delete');
+
+
+/**
+ * exams
+ */
+
+Route::get('admin/exams', [ExamController::class, 'index'])
+    ->middleware('auth:admin')
+    ->name('admin.exams');
