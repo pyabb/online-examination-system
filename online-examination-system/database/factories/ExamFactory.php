@@ -25,6 +25,8 @@ class ExamFactory extends Factory
             'date' => $this->faker->dateTime(),
             'time' => 20,
             'status' => $status[array_rand($status)],
+            'questions' => 5,
+            'maxNote' => 15,
             'adminId' => 1,
             'remember_token' => Str::random(10),
         ];

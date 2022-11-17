@@ -26,6 +26,8 @@ class Exam extends Authenticatable
         'date',
         'time',
         'status',
+        'questions',
+        'maxNote',
         'adminId',
     ];
 
