@@ -14,6 +14,11 @@ class ExamController extends Controller
         return view('templates.admin.exam-index', ['exams' => $exams]);
     }
 
+    public function create()
+    {
+        return view('templates.admin.exam-create');
+    }
+
     public function delete($id)
     {
         $exam = Exam::find($id);

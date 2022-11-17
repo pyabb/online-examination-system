@@ -100,6 +100,10 @@ Route::get('admin/exams', [ExamController::class, 'index'])
     ->middleware('auth:admin')
     ->name('admin.exams');
 
+Route::get('admin/exams/create', [ExamController::class, 'create'])
+    ->middleware(['auth:admin'])
+    ->name('admin.exam.create');
+
 Route::delete('admin/exams/{id}', [ExamController::class, 'delete'])
     ->where('id', '[0-9]+')
     ->middleware(['auth:admin'])
