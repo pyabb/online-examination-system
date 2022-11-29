@@ -28,7 +28,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <h3 class="card-title">Table Exams</h3>
-                                <a href="javascript:void();" class="btn btn-primary">Create Exam</a>
+                                <a href="{{ route('admin.exam.create') }}" class="btn btn-primary">Create Exam</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
