@@ -22,10 +22,10 @@
                 <!-- Row -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
-                        <form class="card form-horizontal" method="POST" action="{{ route('admin.students') }}">
+                        <form class="card form-horizontal" method="POST" action="{{ route('admin.exams') }}">
                             @csrf
                             <div class="card-header d-flex flex-column align-items-start">
-                                <h4 class="card-title">Data of the student</h4>
+                                <h4 class="card-title">Data of the new test</h4>
                                 @if(session()->has('message'))
                                     <div class="mt-4 text-sm text-success">
                                         {{ session()->get('message') }}
@@ -38,7 +38,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-horizontal">
-                                    <div class="row mb-4">
+                                    <div class="row mb-5">
                                         <div class="col-md-12">
                                             <label class="form-label">Course</label>
                                             <div class="">
@@ -46,7 +46,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-4">
+                                    <div class="row mb-5">
                                         <div class="col-md-12">
                                             <label class="form-label">Theme</label>
                                             <div class="">
@@ -54,21 +54,47 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-4">
+                                    <div class="row mb-5">
                                         <div class="col-md-12">
-                                            <label class="form-label">Exam indications</label>
+                                            <label class="form-label">Description</label>
                                             <div class="">
-                                                <input type="text" class="form-control" name="theme" placeholder="Indications ..." value="{{ old('indications') }}">
+                                                <input type="text" class="form-control" name="description" placeholder="description ..." value="{{ old('description') }}">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-4">
+                                    <div class="row mb-5">
+                                        <div class="col-md-3">
+                                            <label class=" form-label">Questions</label>
+                                            <div class="">
+                                                <input type="number" class="form-control" name="questions" placeholder="Recommended 5 questions ..." value="{{ old('questions') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class=" form-label">Score</label>
+                                            <div class="">
+                                                <input type="number" class="form-control" name="score" placeholder="Max score ..." value="{{ old('score') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class=" form-label">empty</label>
+                                            <div class="">
+                                                <input type="number" class="form-control" {{--name="lastname"--}} placeholder="No values ..." value="{{ old('empty') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class=" form-label">empty</label>
+                                            <div class="">
+                                                <input type="number" class="form-control" {{--name="lastname"--}} placeholder="No values ..." value="{{ old('empty') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-5">
                                         <div class="col-md-3">
                                             <label class=" form-label">Date</label>
                                             <div class="input-group">
                                                 <div class="input-group-text">
                                                     <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
-                                                </div><input class="form-control fc-datepicker" placeholder="YYYY/MM/DD" type="text">
+                                                </div><input class="form-control fc-datepicker" name="date" placeholder="YYYY/MM/DD" type="text" value="{{ old('date') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -78,7 +104,7 @@
                                                     <i class="fa fa-clock-o tx-16 lh-0 op-6"></i>
                                                 </div>
                                                 <!-- input-group-text -->
-                                                <input class="form-control" id="tpBasic" placeholder="00:00xm" type="text">
+                                                <input class="form-control" id="tpBasic" name="initHour" placeholder="00:00xm" type="text" value="{{ old('initHour') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -88,13 +114,13 @@
                                                     <i class="fa fa-clock-o tx-16 lh-0 op-6"></i>
                                                 </div>
                                                 <!-- input-group-text -->
-                                                <input class="form-control" placeholder="00:00xm" type="text" value="" disabled>
+                                                <input class="form-control" name="endHour" placeholder="00:00xm" type="text" id="tpBasic2">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <label class=" form-label">Time</label>
                                             <div class="">
-                                                <input type="number" class="form-control" name="lastname" placeholder="Default 20 min ..." value="{{ old('time') }}">
+                                                <input type="number" name="time" class="form-control" placeholder="Recommended 20 min ..." value="{{ old('time') }}">
                                             </div>
                                         </div>
                                     </div>
