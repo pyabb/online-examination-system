@@ -18,11 +18,12 @@ class CreateExamTable extends Migration
             $table->string('uuid', 36)->unique();
             $table->string('course', 255);
             $table->string('theme', 255);
+            $table->string('description', 255)->nullable();
             $table->timestamp('date');
             $table->integer('time');
-            $table->enum('status', ['progress', 'pending', 'finish']);
-            $table->mediumInteger('questions')->default(2);
-            $table->decimal('maxNote', '6', '3');
+            $table->enum('status', ['progress', 'pending', 'finish'])->default('pending');
+            $table->mediumInteger('questions');
+            $table->decimal('score', '6', '3');
             $table->integer('adminId');
             $table->rememberToken();
             $table->timestamps();

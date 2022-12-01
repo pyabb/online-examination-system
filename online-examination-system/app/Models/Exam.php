@@ -23,11 +23,12 @@ class Exam extends Authenticatable
         'uuid',
         'course',
         'theme',
+        'description',
         'date',
         'time',
         'status',
         'questions',
-        'maxNote',
+        'score',
         'adminId',
     ];
 

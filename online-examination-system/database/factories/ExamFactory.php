@@ -22,11 +22,12 @@ class ExamFactory extends Factory
             'uuid' => Uuid::uuid4()->toString(),
             'course' => $course[array_rand($course)],
             'theme' => 'Example theme signature',
+            'description' => 'Custom description message for this exam',
             'date' => $this->faker->dateTime(),
             'time' => 20,
             'status' => $status[array_rand($status)],
             'questions' => 5,
-            'maxNote' => 15,
+            'score' => 15,
             'adminId' => 1,
             'remember_token' => Str::random(10),
         ];
