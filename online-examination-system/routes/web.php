@@ -104,6 +104,10 @@ Route::get('admin/exams/create', [ExamController::class, 'create'])
     ->middleware(['auth:admin'])
     ->name('admin.exam.create');
 
+Route::get('admin/exams/create/confirmation', [ExamController::class, 'confirmation'])
+    ->middleware(['auth:admin'])
+    ->name('admin.exam.create.confirmation');
+
 Route::post('admin/exams', [ExamController::class, 'store'])
     ->middleware(['auth:admin']);
 

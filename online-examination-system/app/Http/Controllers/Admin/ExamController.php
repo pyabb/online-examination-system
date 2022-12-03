@@ -24,6 +24,11 @@ class ExamController extends Controller
         return view('templates.admin.exam-create');
     }
 
+    public function confirmation()
+    {
+        return view('templates.admin.exam-create-confirmation');
+    }
+
     public function store(ExamRequest $request)
     {
         $validated = $request->validated();
@@ -39,7 +44,11 @@ class ExamController extends Controller
                 'exam' => trans('crud.exam.store.error'),
             ]);
         }
-        return redirect()->back()->with('message', 'The exam was created successfully.');
+        //return redirect()->back()->with('message', 'The exam was created successfully.');
+        return redirect(route('admin.exam.create.confirmation'))
+            ->with('success', true)
+            ->with('message', 'The exam was created successfully')
+            ->with('examId', $validated['uuid']);
     }
 
     public function delete($id)
