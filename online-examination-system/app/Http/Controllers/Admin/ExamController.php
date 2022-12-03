@@ -29,7 +29,8 @@ class ExamController extends Controller
         $validated = $request->validated();
         $validated['uuid'] = Uuid::uuid4()->toString();
         $validated['adminId'] = Auth::user()->id;
-        $validated['date'] = date('Y-m-d H:i:s',strtotime($validated['date'] . ' ' . $validated['initHour']));
+        $validated['init_date'] = date('Y-m-d H:i:s',strtotime($validated['date'] . ' ' . $validated['init_hour']));
+        $validated['end_date'] = date('Y-m-d H:i:s', strtotime('+' . $validated['time'] . 'minutes', strtotime($validated['init_date'])));
 
         $success = Exam::create($validated);
         if(!$success)

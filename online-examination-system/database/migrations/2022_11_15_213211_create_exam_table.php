@@ -19,7 +19,8 @@ class CreateExamTable extends Migration
             $table->string('course', 255);
             $table->string('theme', 255);
             $table->string('description', 255)->nullable();
-            $table->timestamp('date');
+            $table->timestamp('init_date');
+            $table->timestamp('end_date')->nullable();
             $table->integer('time');
             $table->enum('status', ['progress', 'pending', 'finish'])->default('pending');
             $table->mediumInteger('questions');

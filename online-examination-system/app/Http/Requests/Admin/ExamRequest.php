@@ -30,7 +30,7 @@ class ExamRequest extends FormRequest
             'questions' => ['required', 'digits_between:1,3'],
             'score' => ['required', 'digits_between:1,3'],
             'date' => ['required', 'date', 'after_or_equal:today'],
-            'initHour' => ['required', 'date_format:h:ia'],
+            'init_hour' => ['required', 'date_format:h:i a'],
             'time' => ['required', 'digits_between:1,3']
         ];
     }
@@ -41,8 +41,8 @@ class ExamRequest extends FormRequest
     public function messages()
     {
         return [
-            'initHour.required' => 'The initial hour field is required',
-            'initHour.date_format' => 'The initial hour field does not match the format 00:00am or 00:00pm',
+            'init_hour.required' => 'The initial hour field is required',
+            'init_hour.date_format' => 'The initial hour field does not match the format 00:00 am or 00:00 pm',
         ];
     }
 }
