@@ -61,7 +61,7 @@
                                                         <a href="javascript:void(0);" id="bEdit" type="button" class="btn btn-sm btn-gray">
                                                             <span class="fe fe-eye"></span>
                                                         </a>
-                                                        <a href="javascript:void(0);" id="bEdit" type="button" class="btn btn-sm btn-primary">
+                                                        <a href="{{ route('admin.exam.edit', $exam->id) }}" id="bEdit" type="button" class="btn btn-sm btn-primary">
                                                             <span class="fe fe-edit"></span>
                                                         </a>
                                                         <a href="javascript:void(0);" id="bEdit" type="button" class="btn btn-sm btn-info">
