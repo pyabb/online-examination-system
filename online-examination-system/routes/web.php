@@ -111,6 +111,16 @@ Route::get('admin/exams/create/confirmation', [ExamController::class, 'confirmat
 Route::post('admin/exams', [ExamController::class, 'store'])
     ->middleware(['auth:admin']);
 
+Route::get('admin/exams/{id}/edit', [ExamController::class, 'edit'])
+    ->where('id', '[0-9]+')
+    ->middleware('auth:admin')
+    ->name('admin.exam.edit');
+
+Route::put('admin/exams/{id}', [ExamController::class, 'update'])
+    ->where('id', '[0-9]+')
+    ->middleware('auth:admin')
+    ->name('admin.exam.update');
+
 Route::delete('admin/exams/{id}', [ExamController::class, 'delete'])
     ->where('id', '[0-9]+')
     ->middleware(['auth:admin'])

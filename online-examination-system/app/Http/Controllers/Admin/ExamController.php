@@ -51,6 +51,33 @@ class ExamController extends Controller
             ->with('examId', $validated['uuid']);
     }
 
+    public function edit($id)
+    {
+        $exam = Exam::find($id);
+        if(!$exam)
+        {
+            return abort(404);
+        }
+        return view('templates.admin.exam-edit', ['exam' => $exam]);
+    }
+
+    public function update(ExamRequest $request, $id)
+    {
+        $validated = $request->validated();
+        $validated['init_date'] = date('Y-m-d H:i:s',strtotime($validated['date'] . ' ' . $validated['init_hour']));
+        $validated['end_date'] = date('Y-m-d H:i:s', strtotime('+' . $validated['time'] . 'minutes', strtotime($validated['init_date'])));
+        unset($validated['date']);
+        unset($validated['init_hour']);
+        $success = Exam::where(['id' => $id])->update($validated);
+        if(!$success)
+        {
+            throw ValidationException::withMessages([
+                'exam' => trans('crud.exam.update.error'),
+            ]);
+        }
+        return redirect()->back()->with('message', 'The exam was updated successfully.');
+    }
+
     public function delete($id)
     {
         $exam = Exam::find($id);
