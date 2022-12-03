@@ -75,6 +75,7 @@
                     <div class="col-xl-8">
                         <form class="card" method="POST" action="{{ route('admin.student.update', $student->id) }}">
                             @csrf
+                            @method('PUT')
                             <div class="card-header d-flex flex-column align-items-start">
                                 <h3 class="card-title">Edit Student Profile</h3>
 
