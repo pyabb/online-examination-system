@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\AdminAuthenticatedSessionController;
+use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewsController;
 use Illuminate\Support\Facades\Route;
@@ -89,3 +90,38 @@ Route::delete('admin/students/{id}', [UserController::class, 'delete'])
     ->where('id', '[0-9]+')
     ->middleware(['auth:admin'])
     ->name('admin.student.delete');
+
+
+/**
+ * exams
+ */
+
+Route::get('admin/exams', [ExamController::class, 'index'])
+    ->middleware('auth:admin')
+    ->name('admin.exams');
+
+Route::get('admin/exams/create', [ExamController::class, 'create'])
+    ->middleware(['auth:admin'])
+    ->name('admin.exam.create');
+
+Route::get('admin/exams/create/confirmation', [ExamController::class, 'confirmation'])
+    ->middleware(['auth:admin'])
+    ->name('admin.exam.create.confirmation');
+
+Route::post('admin/exams', [ExamController::class, 'store'])
+    ->middleware(['auth:admin']);
+
+Route::get('admin/exams/{id}/edit', [ExamController::class, 'edit'])
+    ->where('id', '[0-9]+')
+    ->middleware('auth:admin')
+    ->name('admin.exam.edit');
+
+Route::put('admin/exams/{id}', [ExamController::class, 'update'])
+    ->where('id', '[0-9]+')
+    ->middleware('auth:admin')
+    ->name('admin.exam.update');
+
+Route::delete('admin/exams/{id}', [ExamController::class, 'delete'])
+    ->where('id', '[0-9]+')
+    ->middleware(['auth:admin'])
+    ->name('admin.exam.delete');

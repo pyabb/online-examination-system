@@ -65,8 +65,8 @@
                             class="angle fe fe-chevron-right"></i></a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)">Exams</a></li>
-                        <li><a href="javascript:void(0);" class="slide-item"> View exams</a></li>
-                        <li><a href="javascript:void(0);" class="slide-item"> Add new exam</a></li>
+                        <li><a href="{{ route('admin.exams') }}" class="slide-item"> View exams</a></li>
+                        <li><a href="{{ route('admin.exam.create') }}" class="slide-item"> Add new exam</a></li>
                     </ul>
                 </li>
 
