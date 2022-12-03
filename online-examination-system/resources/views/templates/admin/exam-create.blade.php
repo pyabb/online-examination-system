@@ -76,15 +76,19 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <label class=" form-label">empty</label>
+                                            <label class=" form-label">Time</label>
                                             <div class="">
-                                                <input type="number" class="form-control" {{--name="lastname"--}} placeholder="No values ..." value="{{ old('empty') }}">
+                                                <input type="number" name="time" class="form-control" placeholder="Recommended 20 min ..." value="{{ old('time') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <label class=" form-label">empty</label>
+                                            <label class="form-label">Random <i class="fa fa-question-circle-o" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-original-title="Random field definition ..."></i></label>
                                             <div class="">
-                                                <input type="number" class="form-control" {{--name="lastname"--}} placeholder="No values ..." value="{{ old('empty') }}">
+                                                <select class="select2 form-select" {{--name="" id=""--}}>
+                                                    <option selected disabled>Select</option>
+                                                    <option value="1">True</option>
+                                                    <option value="0">False</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -104,23 +108,7 @@
                                                     <i class="fa fa-clock-o tx-16 lh-0 op-6"></i>
                                                 </div>
                                                 <!-- input-group-text -->
-                                                <input class="form-control" id="tpBasic" name="initHour" placeholder="00:00xm" type="text" value="{{ old('initHour') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label class=" form-label">Final hour</label>
-                                            <div class="input-group">
-                                                <div class="input-group-text">
-                                                    <i class="fa fa-clock-o tx-16 lh-0 op-6"></i>
-                                                </div>
-                                                <!-- input-group-text -->
-                                                <input class="form-control" name="endHour" placeholder="00:00xm" type="text" id="tpBasic2">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label class=" form-label">Time</label>
-                                            <div class="">
-                                                <input type="number" name="time" class="form-control" placeholder="Recommended 20 min ..." value="{{ old('time') }}">
+                                                <input class="form-control" id="tpBasic" name="init_hour" placeholder="00:00 xm" type="text" value="{{ old('init_hour') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -152,14 +140,6 @@
         <script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
         <script src="{{ asset('assets/js/select2.js') }}"></script>
 
-        <!-- TypeHead js -->
-        <script src="{{ asset('assets/plugins/bootstrap5-typehead/autocomplete.js') }}"></script>
-        <script src="{{ asset('assets/js/typehead.js') }}"></script>
-
-        <!-- FILE UPLOADES JS -->
-        <script src="{{ asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
-        <script src="{{ asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
-
         <!-- BOOTSTRAP-DATERANGEPICKER JS -->
         <script src="{{ asset('assets/plugins/bootstrap-daterangepicker/moment.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
@@ -168,33 +148,26 @@
         <script src="{{ asset('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
 
         <!-- INTERNAL Sumoselect js-->
-        <script src="{{ asset('assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
+        {{--<script src="{{ asset('assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>--}}
 
         <!-- TIMEPICKER JS -->
         <script src="{{ asset('assets/plugins/time-picker/jquery.timepicker.js') }}"></script>
         <script src="{{ asset('assets/plugins/time-picker/toggles.min.js') }}"></script>
 
-        <!-- INTERNAL jquery transfer js-->
-        <script src="{{ asset('assets/plugins/jQuerytransfer/jquery.transfer.js') }}"></script>
-
         <!-- INTERNAL multi js-->
-        <script src="{{ asset('assets/plugins/multi/multi.min.js') }}"></script>
+        {{--<script src="{{ asset('assets/plugins/multi/multi.min.js') }}"></script>--}}
 
         <!-- DATEPICKER JS -->
         <script src="{{ asset('assets/plugins/date-picker/date-picker.js') }}"></script>
         <script src="{{ asset('assets/plugins/date-picker/jquery-ui.js') }}"></script>
-        <script src="{{ asset('assets/plugins/input-mask/jquery.maskedinput.js') }}"></script>
-
-        <!-- COLOR PICKER JS -->
-        <script src="{{ asset('assets/plugins/pickr-master/pickr.es5.min.js') }}"></script>
-        <script src="{{ asset('assets/js/picker.js') }}"></script>
 
         <!-- MULTI SELECT JS-->
-        <script src="{{ asset('assets/plugins/multipleselect/multiple-select.js') }}"></script>
-        <script src="{{ asset('assets/plugins/multipleselect/multi-select.js') }}"></script>
+        {{--<script src="{{ asset('assets/plugins/multipleselect/multiple-select.js') }}"></script>
+        <script src="{{ asset('assets/plugins/multipleselect/multi-select.js') }}"></script>--}}
 
-        <!-- FORMELEMENTS JS -->
+        <!-- FORM ELEMENTS JS -->
         <script src="{{ asset('assets/js/formelementadvnced.js') }}"></script>
         <script src="{{ asset('assets/js/form-elements.js') }}"></script>
+
     </x-slot>
 </x-app-layout>
