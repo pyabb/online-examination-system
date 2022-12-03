@@ -54,17 +54,20 @@
                                                 </td>
                                                 <td>{{ $exam->course }}</td>
                                                 <td>{{ $exam->theme }}</td>
-                                                <td>{{ $exam->date }}</td>
-                                                <td>{{ $exam->time }} min</td>
+                                                <td>{{ date('Y-m-d', strtotime($exam->init_date)) }}</td>
+                                                <td>{{ $exam->time }} minutes</td>
                                                 <td>
                                                     <div class="btn-list">
-                                                        <a href="javascript:void();" id="bEdit" type="button" class="btn btn-sm btn-gray">
+                                                        <a href="javascript:void(0);" id="bEdit" type="button" class="btn btn-sm btn-gray">
                                                             <span class="fe fe-eye"></span>
                                                         </a>
-                                                        <a href="javascript:void();" id="bEdit" type="button" class="btn btn-sm btn-primary">
+                                                        <a href="javascript:void(0);" id="bEdit" type="button" class="btn btn-sm btn-primary">
                                                             <span class="fe fe-edit"></span>
                                                         </a>
-                                                        <button id="bDel" type="button" class="btn  btn-sm btn-danger">
+                                                        <a href="javascript:void(0);" id="bEdit" type="button" class="btn btn-sm btn-info">
+                                                            <span class="fe fe-list"></span>
+                                                        </a>
+                                                        <button id="bDel" type="button" class="btn btn-sm btn-danger">
                                                             <span class="fe fe-trash-2"></span>
                                                         </button>
                                                     </div>
