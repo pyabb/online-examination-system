@@ -17,6 +17,12 @@ $(function(e) {
             sSearch: '',
         },
         order: [[0, 'desc']],
+        columnDefs: [
+            {
+                targets: [5],
+                orderable: false,
+            },
+        ],
     });
 
     //______Select2
