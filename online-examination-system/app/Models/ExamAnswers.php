@@ -13,6 +13,7 @@ class ExamAnswers extends Model
 
     protected $fillable = [
         'examQuestionId',
+        'answer',
         'isAnswer',
     ];
 }
