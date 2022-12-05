@@ -25,7 +25,7 @@ class ExamAnswersRequest extends FormRequest
     {
         return [
             'answer' => ['required'],
-            'question' => ['required', 'digits_between:1,3'],
+            'questionId' => ['required', 'digits_between:1,3'],
         ];
     }
 }
