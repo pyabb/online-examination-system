@@ -16,5 +16,13 @@ class ExamQuestions extends Model
         'question'
     ];
 
+    /*public function exam()
+    {
+        return $this->belongsTo(\App\Models\Exam::class, 'examId');
+    }*/
 
+    public function allAnswers()
+    {
+        return $this->hasMany(\App\Models\ExamAnswers::class, 'examQuestionId');
+    }
 }
