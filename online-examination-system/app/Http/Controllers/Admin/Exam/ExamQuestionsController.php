@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Exam;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Exam\ExamQuestionsRequest;
 use App\Models\Exam;
 use App\Models\ExamQuestions;
 use Illuminate\Http\Request;
@@ -39,14 +40,23 @@ class ExamQuestionsController extends Controller
         return view('templates.admin.exam-questions', ['exam' => $exam, 'question' => $question, 'questions' => $questions]);
     }
 
-    public function store(ExamQuestionsRequest $request)
+    public function update(ExamQuestionsRequest $request, $id, $qid)
     {
-        // todo
-    }
+        $validated = $request->validated();
 
-    public function update()
-    {
-        // todo
+        $exam = Exam::find($id);
+        if(!$exam)
+        {
+            return response()->json(['success' => false, 'message' => 'Oops! and error. The exam dont exists.']);
+        }
+
+        $question = ExamQuestions::where(['id' => $qid])->update($validated);
+        if(!$question)
+        {
+            return response()->json(['success' => false, 'message' => 'Oops! and error. The question has not been saved.']);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Question has been saved successfully.']);
     }
 
     public function delete()
