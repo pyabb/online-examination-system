@@ -24,7 +24,6 @@ class ExamQuestionsRequest extends FormRequest
     public function rules()
     {
         return [
-            'examId' => ['required', 'digits_between:1,3'],
             'question' => ['required'],
         ];
     }
