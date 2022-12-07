@@ -2,12 +2,9 @@ require ('../bootstrap');
 import Swal from 'sweetalert2'
 
 $(document).ready(function () {
-    const uri = process.env.MIX_APP_URL || $("meta[name='webpage']").attr('content');
-    //const answersContainer = $('#answers-container');
+    const putUri = window.location.href;
     $('#save-question').click(function () {
-        const examId = $('#exam-id').attr('data-exam-id');
         const question = $('#exam-question').val();
-        let message;
         Swal.fire({
             icon: 'warning',
             title: 'Save a question. Are you sure?',
@@ -24,40 +21,27 @@ $(document).ready(function () {
                 confirmButton: 'dark__swal__confirm__button',
             },
             preConfirm: () => {
-                //inputquestion = question;
-                //return question;
-                return axios.post(`${uri}/admin/exams/questions`, {
+                return axios.put(`${putUri}`, {
                     question: question,
-                    examId: examId,
                 })
                     .then(response => {
-                        /*if (!response.ok) {
-                            throw new Error(response.statusText)
-                        }*/
-                        console.log('llegamos pape');
-                        console.log(response.data);
-                        console.log(response.status);
-                        return response.data;
-                    })/*
-                    .then(response => {
-                        //console.log(response);
-                        message = response.message;
-                        if(response.success) {
-                            data.icon = 'success';
-                            data.title = 'Deleted'
-                            table
-                                .row( $(this).parents('tr') )
-                                .remove()
-                                .draw();
+                        if(response.data.success) {
+                            return {
+                                icon: 'success',
+                                title: 'Question saved',
+                                text: response.data.message,
+                                confirmButtonText: 'Done!',
+                            };
                         } else {
-                            data.title = 'Oops! an error';
-                            data.icon = 'error';
+                            return {
+                                icon: 'error',
+                                title: 'Oops! an error',
+                                text: response.data.message,
+                                confirmButtonText: 'Done!',
+                            };
                         }
-                    })*/
+                    })
                     .catch(error => {
-                        /*Swal.showValidationMessage(
-                            `Request failed: ${error}`
-                        )*/
                         const errorMessages = error.response.data.errors;
                         let html = ``;
                         for(let x in errorMessages) {
@@ -70,17 +54,10 @@ $(document).ready(function () {
                             confirmButtonText: 'Done!',
                             html: html,
                         };
-                        /*Swal.fire({
-                            title: 'Validation error!',
-                            icon: 'warning',
-                            html: `<ul>${html}</ul>`,
-                            confirmButtonText: 'Done!',
-                        });*/
                     })
             },
             allowOutsideClick: () => !Swal.isLoading()
         }).then((result) => {
-            //console.log(result.value);
             let props = {
                 background: '#212121',
                 customClass: {
@@ -93,14 +70,6 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 props = Object.assign(props, result.value)
                 Swal.fire(props);
-
-                /*Swal.fire({
-                    icon: data.icon,
-                    title: data.title,
-                    text: message,
-                    background: '#212121',
-
-                })*/
             }
         });
     });
