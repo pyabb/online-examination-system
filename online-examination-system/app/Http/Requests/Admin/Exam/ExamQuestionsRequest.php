@@ -24,8 +24,15 @@ class ExamQuestionsRequest extends FormRequest
     public function rules()
     {
         return [
-            'examId' => ['required', 'digit_between:1,3'],
+            'examId' => ['required', 'digits_between:1,3'],
             'question' => ['required'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'question.required' => 'The field of the question is required.',
         ];
     }
 }
