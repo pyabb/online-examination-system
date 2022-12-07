@@ -153,7 +153,7 @@
                                         <div class="col-md-12 mb-2">
                                             <label class="form-label mb-3">Write question</label>
                                             <div class="">
-                                                <textarea type="text" class="form-control" placeholder="write your question here! ..." rows="4" id="exam-question"></textarea>
+                                                <textarea type="text" class="form-control" placeholder="write your question here! ..." rows="4" id="exam-question">{{ $question->question }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-12 text-end">
@@ -264,14 +264,6 @@
         <!-- SELECT2 JS -->
         <script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
         <script src="{{ asset('assets/js/select2.js') }}"></script>
-
-        <!-- TIMEPICKER JS -->
-        {{--<script src="{{ asset('assets/plugins/time-picker/jquery.timepicker.js') }}"></script>
-        <script src="{{ asset('assets/plugins/time-picker/toggles.min.js') }}"></script>--}}
-
-        <!-- DATEPICKER JS -->
-        {{--<script src="{{ asset('assets/plugins/date-picker/date-picker.js') }}"></script>
-        <script src="{{ asset('assets/plugins/date-picker/jquery-ui.js') }}"></script>--}}
 
         <!-- -->
         <script src="{{ asset(('assets/dist/js/answers.min.js')) }}"></script>
