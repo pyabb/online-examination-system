@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ExamRequest;
 use App\Models\Exam;
+use App\Models\ExamQuestions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -37,14 +38,20 @@ class ExamController extends Controller
         $validated['init_date'] = date('Y-m-d H:i:s',strtotime($validated['date'] . ' ' . $validated['init_hour']));
         $validated['end_date'] = date('Y-m-d H:i:s', strtotime('+' . $validated['time'] . 'minutes', strtotime($validated['init_date'])));
 
-        $success = Exam::create($validated);
-        if(!$success)
+        $exam = Exam::create($validated);
+        if(!$exam)
         {
             throw ValidationException::withMessages([
                 'exam' => trans('crud.exam.store.error'),
             ]);
         }
-        //return redirect()->back()->with('message', 'The exam was created successfully.');
+
+        // This value need evaluation
+        $questions = ExamQuestions::factory()
+            ->count($validated['questions'])
+            ->for($exam)
+            ->create();
+
         return redirect(route('admin.exam.create.confirmation'))
             ->with('success', true)
             ->with('message', 'The exam was created successfully')
