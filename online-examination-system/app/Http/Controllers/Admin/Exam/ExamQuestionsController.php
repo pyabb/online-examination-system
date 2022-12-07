@@ -19,7 +19,7 @@ class ExamQuestionsController extends Controller
         }
 
         $question = ExamQuestions::find($qid);
-        if($question->exam->id != $exam->id)
+        if(!$question || $question->exam->id != $exam->id)
         {
             return abort(404);
         }
