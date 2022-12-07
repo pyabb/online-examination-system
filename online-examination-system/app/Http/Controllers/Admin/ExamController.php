@@ -54,6 +54,8 @@ class ExamController extends Controller
 
         return redirect(route('admin.exam.create.confirmation'))
             ->with('success', true)
+            ->with('id', $exam->id)
+            ->with('firstQuestionId', $questions->first()->id)
             ->with('message', 'The exam was created successfully')
             ->with('examId', $validated['uuid']);
     }
