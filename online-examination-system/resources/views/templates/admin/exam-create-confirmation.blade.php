@@ -43,7 +43,7 @@
                                             </div>
 
                                             <div class="expanel-footer bg-transparent border-top-0 text-center">
-                                                <a href="javascript:void(0);" class="btn btn-outline-primary">Create questions</a>
+                                                <a href="{{ route('admin.exam.questions', [session()->get('id'), session()->get('firstQuestionId')]) }}" class="btn btn-outline-primary">Edit questions</a>
                                             </div>
                                         @else
                                             <div class="expanel-heading text-center h3">
