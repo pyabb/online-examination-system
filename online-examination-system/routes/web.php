@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Exam\ExamAnswersController;
+use App\Http\Controllers\Admin\Exam\ExamQuestionsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\AdminAuthenticatedSessionController;
 use App\Http\Controllers\Admin\ExamController;
@@ -130,10 +132,23 @@ Route::delete('admin/exams/{id}', [ExamController::class, 'delete'])
 /**
  * exam questions
  */
-Route::get('admin/exams/{id}/questions/{qid}', [ExamController::class, 'questions_edit'])
+Route::get('admin/exams/{id}/questions/{qid}', [ExamQuestionsController::class, 'edit'])
     ->where('id', '[0-9]+')
     ->where('qid', '[0-9]+')
     ->middleware('auth:admin')
     ->name('admin.exam.questions');
 
+Route::put('admin/exams/{id}/questions/{qid}', [ExamQuestionsController::class, 'update'])
+    ->middleware(['auth:admin'])
+    ->where('id', '[0-9]+')
+    ->where('qid', '[0-9]+')
+    ->name('admin.exam.question.update');
 
+
+/**
+ * exam answers
+ */
+
+Route::post('admin/exams/questions/answers', [ExamAnswersController::class, 'store'])
+    ->middleware(['auth:admin'])
+    ->name('admin.exam.question.answers');
