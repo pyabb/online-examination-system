@@ -16,10 +16,10 @@ class ExamQuestions extends Model
         'question'
     ];
 
-    /*public function exam()
+    public function exam()
     {
         return $this->belongsTo(\App\Models\Exam::class, 'examId');
-    }*/
+    }
 
     public function allAnswers()
     {
