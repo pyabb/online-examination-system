@@ -144,6 +144,12 @@ Route::put('admin/exams/{id}/questions/{qid}', [ExamQuestionsController::class, 
     ->where('qid', '[0-9]+')
     ->name('admin.exam.question.update');
 
+Route::delete('admin/exams/{id}/questions/{qid}', [ExamQuestionsController::class, 'delete'])
+    ->middleware(['auth:admin'])
+    ->where('id', '[0-9]+')
+    ->where('qid', '[0-9]+')
+    ->name('admin.exam.question.delete');
+
 
 /**
  * exam answers
