@@ -158,7 +158,7 @@
                                         </div>
                                         <div class="col-md-12 text-end">
                                             <button class="btn btn-success my-1" id="save-question">Save</button>
-                                            <a href="javascript:void(0);" class="btn btn-danger my-1">Delete</a>
+                                            <a href="javascript:void(0);" class="btn btn-danger my-1" id="delete-question">Delete</a>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
