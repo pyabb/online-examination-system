@@ -77,8 +77,30 @@ class ExamController extends Controller
         $validated['end_date'] = date('Y-m-d H:i:s', strtotime('+' . $validated['time'] . 'minutes', strtotime($validated['init_date'])));
         unset($validated['date']);
         unset($validated['init_hour']);
-        $success = Exam::where(['id' => $id])->update($validated);
-        if(!$success)
+        $exam = Exam::find($id);
+        if($exam->questions != $validated['questions'])
+        {
+            $result = $exam->questions - $validated['questions'];
+            if($result < 0)
+            {
+                $questions = ExamQuestions::factory()
+                    ->count(abs($result))
+                    ->for($exam)
+                    ->create();
+            }
+            if($result > 0)
+            {
+                $questions_id = $exam->allQuestions
+                    ->sortByDesc('id')
+                    ->take($result)
+                    ->keyBy('id')
+                    ->keys()
+                    ->toArray();
+                $questions = ExamQuestions::destroy($questions_id);
+            }
+        }
+
+        if(!$exam->update($validated))
         {
             throw ValidationException::withMessages([
                 'exam' => trans('crud.exam.update.error'),
