@@ -165,18 +165,18 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="form-label mb-2">Answers</div>
-                                                <div><button class="btn btn-outline-info" id="create-answers">create</button></div>
+                                                {{--<div><button class="btn btn-outline-info" id="create-answers">create</button></div>
                                                 <div class="custom-controls-stacked" id="answers-container">
 
                                                     <div class="row mb-4">
                                                         <div class="col-md-10">
                                                             <label class="custom-control custom-radio-md mb-3">
-                                                                <input type="radio" class="custom-control-input" name="example-radios" value="respuesta 1" checked>
+                                                                <input type="radio" class="custom-control-input" name="example-radios" value="respuesta 1">
                                                                 <span class="custom-control-label">MOLECULAS- ELEMENTO- ATOMOS- ELECTRONES</span>
                                                             </label>
                                                         </div>
                                                         <div class="col-md-2 btn-list">
-                                                            <a href="{{ route('admin.exam.edit', $exam->id) }}" id="bEdit" type="button" class="btn btn-sm btn-primary">
+                                                            <a href="javascript:void(0);" id="bEdit" type="button" class="btn btn-sm btn-primary">
                                                                 <span class="fe fe-edit"></span>
                                                             </a>
                                                             <button id="bDel" type="button" class="btn btn-sm btn-danger">
@@ -185,59 +185,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="row mb-4">
-                                                        <div class="col-md-10">
-                                                            <label class="custom-control custom-radio-md mb-3">
-                                                                <input type="radio" class="custom-control-input" name="example-radios" value="respuesta 1">
-                                                                <span class="custom-control-label">ELECTRONES-PARTICULAS-MOLECULAS</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-md-2 btn-list">
-                                                            <a href="{{ route('admin.exam.edit', $exam->id) }}" id="bEdit" type="button" class="btn btn-sm btn-primary">
-                                                                <span class="fe fe-edit"></span>
-                                                            </a>
-                                                            <button id="bDel" type="button" class="btn btn-sm btn-danger">
-                                                                <span class="fe fe-trash-2"></span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row mb-4">
-                                                        <div class="col-md-10">
-                                                            <label class="custom-control custom-radio-md mb-3">
-                                                                <input type="radio" class="custom-control-input" name="example-radios" value="respuesta 1">
-                                                                <span class="custom-control-label">PROTON - NEUTRON-ION</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-md-2 btn-list">
-                                                            <a href="{{ route('admin.exam.edit', $exam->id) }}" id="bEdit" type="button" class="btn btn-sm btn-primary">
-                                                                <span class="fe fe-edit"></span>
-                                                            </a>
-                                                            <button id="bDel" type="button" class="btn btn-sm btn-danger">
-                                                                <span class="fe fe-trash-2"></span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row mb-4">
-                                                        <div class="col-md-10">
-                                                            <label class="custom-control custom-radio-md mb-3">
-                                                                <input type="radio" class="custom-control-input" name="example-radios" value="respuesta 1">
-                                                                <span class="custom-control-label">MOLECULAS-ATOMOS-ELEMNTOS</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-md-2 btn-list">
-                                                            <a href="{{ route('admin.exam.edit', $exam->id) }}" id="bEdit" type="button" class="btn btn-sm btn-primary">
-                                                                <span class="fe fe-edit"></span>
-                                                            </a>
-                                                            <button id="bDel" type="button" class="btn btn-sm btn-danger">
-                                                                <span class="fe fe-trash-2"></span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
+                                                </div>--}}
                                             </div>
                                         </div>
                                     </div>
