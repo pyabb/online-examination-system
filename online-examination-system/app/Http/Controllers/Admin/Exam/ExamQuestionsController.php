@@ -59,8 +59,44 @@ class ExamQuestionsController extends Controller
         return response()->json(['success' => true, 'message' => 'Question has been saved successfully.']);
     }
 
-    public function delete()
+    public function delete($id, $qid)
     {
-        // todo
+        $exam = Exam::find($id);
+        if(!$exam)
+        {
+            return response()->json(['success' => false, 'message' => 'Oops! and error. The exam dont exists.']);
+        }
+
+        $question = ExamQuestions::where(['id' => $qid, 'examId' => $exam->id])->first();
+        if(!$question)
+        {
+            return response()->json(['success' => false, 'message' => 'Oops! and error. The question dont exists.']);
+        }
+
+        $delete_question = $question->delete();
+        if(!$delete_question)
+        {
+            return response()->json(['success' => false, 'message' => 'Oops! and error. The question dont was deleted.']);
+        }
+
+        $quantity_questions = $exam->questions - 1;
+        $exam->update(['questions' => $quantity_questions]);
+
+        $question = ExamQuestions::where(['examId' => $exam->id])->first();
+        if(!$question)
+        {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => 'Oops! and error. Dont exists any question. You will redirect to exams page.',
+                    'redirect' => route('admin.exams'),
+                ]);
+        }
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Question has been deleted successfully.',
+                'redirect' => route('admin.exam.question.delete', ['id' => $exam->id, 'qid' => $question->id]),
+            ]);
     }
 }
