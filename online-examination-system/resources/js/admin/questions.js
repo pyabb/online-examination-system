@@ -95,20 +95,29 @@ $(document).ready(function () {
                     .then(response => {
                         if(response.data.success) {
                             return {
-                                icon: 'success',
-                                title: 'Question deleted',
-                                text: response.data.message,
-                                allowOutsideClick: false,
-                                allowScapeKey: false,
-                                confirmButtonText: `<a onclick="window.location.href='${response.data.redirect}'">Done!</a>`,
+                                props: {
+                                    icon: 'success',
+                                    title: 'Question deleted',
+                                    text: response.data.message,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    confirmButtonText: "Done!",
+                                },
+                                data: {
+                                    redirect: response.data.redirect,
+                                }
                             };
                         } else {
                             return {
-                                icon: 'error',
-                                title: 'Oops! an error',
-                                text: response.data.message,
-                                confirmButtonText: 'Cancel!',
-                                confirmButtonColor: '#6e7881',
+                                props: {
+                                    icon: 'error',
+                                    title: 'Oops! an error',
+                                    text: response.data.message,
+                                    showConfirmButton: false,
+                                    showCancelButton: true,
+                                    cancelButtonText: 'Cancel!',
+                                    cancelButtonColor: '#6e7881',
+                                }
                             };
                         }
                     })
@@ -120,10 +129,15 @@ $(document).ready(function () {
                         }
                         html = `<ul>${html}</ul>`;
                         return {
-                            icon: 'warning',
-                            title: 'Validation error!',
-                            confirmButtonText: 'Done!',
-                            html: html,
+                            props: {
+                                icon: 'warning',
+                                title: 'Validation error!',
+                                showConfirmButton: false,
+                                showCancelButton: true,
+                                cancelButtonText: 'Cancel!',
+                                cancelButtonColor: '#6e7881',
+                                html: html,
+                            }
                         };
                     })
             },
@@ -139,8 +153,17 @@ $(document).ready(function () {
                 },
             };
             if (result.isConfirmed) {
-                props = Object.assign(props, result.value)
-                Swal.fire(props);
+                let redirect;
+                if(result.value.data) {
+                    redirect = result.value.data.redirect || '';
+                }
+                props = Object.assign(props, result.value.props)
+                Swal.fire(props)
+                    .then(result => {
+                        if(result.isConfirmed) {
+                            window.location.href = redirect;
+                        }
+                    });
             }
         });
     });
