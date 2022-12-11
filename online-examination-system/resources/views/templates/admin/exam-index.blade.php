@@ -64,7 +64,7 @@
                                                         <a href="{{ route('admin.exam.edit', $exam->id) }}" id="bEdit" type="button" class="btn btn-sm btn-primary">
                                                             <span class="fe fe-edit"></span>
                                                         </a>
-                                                        <a href="javascript:void(0);" id="bEdit" type="button" class="btn btn-sm btn-info">
+                                                        <a href="{{ route('admin.exam.questions', [$exam->id, \App\Models\Exam::find($exam->id)->allQuestions->first()->id]) }}" id="bEdit" type="button" class="btn btn-sm btn-info">
                                                             <span class="fe fe-list"></span>
                                                         </a>
                                                         <button id="bDel" type="button" class="btn btn-sm btn-danger">

@@ -15,9 +15,10 @@ class CreateExamQuestionsTable extends Migration
     {
         Schema::create('exam_questions', function (Blueprint $table) {
             $table->id();
-            $table->integer('examId');
+            $table->unsignedBigInteger('examId');
             $table->string('question', 255);
             $table->timestamps();
+            $table->foreign('examId')->references('id')->on('exam')->onDelete('cascade');
         });
     }
 

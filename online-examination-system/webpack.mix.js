@@ -23,6 +23,8 @@ mix
 
     //.js('resources/js/src/default/plugins/p-scroll/perfect-scrollbar.js', 'public/assets/plugins/p-scroll/perfect-scrollbar.js')
     //.js('resources/js/src/default/plugins/bootstrap/js/popper.js', 'public/assets/plugins/bootstrap/js/popper.min.js')
+    //.js('resources/js/admin/answers.js', 'public/assets/dist/js/answers.min.js')
+    //.js('resources/js/admin/questions.js', 'public/assets/dist/js/questions.min.js')
 
     /*.postCss('resources/css/src/default/css/sweetalert2.css','public/assets/dist/css/sweetalert2.min.css', [
         require('autoprefixer'),

@@ -41,4 +41,13 @@ class Exam extends Authenticatable
     protected $hidden = [
         'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function allQuestions()
+    {
+        return $this->hasMany(\App\Models\ExamQuestions::class, 'examId');
+    }
+
 }
